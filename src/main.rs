@@ -8,7 +8,6 @@ use std::collections::HashMap;
 fn main() {
     let args: Vec<String> = env::args().collect();
     let filename = &args[1];
-    println!("Reading: {}", filename);
     let contents = fs::read_to_string(filename)
         .expect("Could not read file");
 
@@ -36,5 +35,6 @@ fn main() {
         let candidates = lookup_table.get(last_word).unwrap();
         sentence.push(rand::thread_rng().choose(&candidates).unwrap());
     }
+
     println!("{:?}", sentence.join(&String::from(" ")));
 }
